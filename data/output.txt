@@ -1,0 +1,1 @@
+['S', ['NP', ['DT', ['det', 'the']], ['NP', ['n', 'man']]], ['VP', ['VP', ['v', 'saw']], ['NP', ['DT', ['det', 'the']], ['NP', ['NP', ['n', 'man']], ['PP', ['P', ['p', 'with']], ['NP', ['DT', ['det', 'the']], ['NP', ['n', 'telescope']]]]]]]]

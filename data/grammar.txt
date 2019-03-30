@@ -28,3 +28,5 @@ n -> flies
 v -> flies
 p -> like
 v -> like
+det -> an
+n -> arrow
