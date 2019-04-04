@@ -233,39 +233,52 @@ if __name__ == '__main__':
                                     ID += 1
         # 여기 까지 하면 전부 완료
 
-        for tableIdx in range (len(idTable)):
-            if idTable[tableIdx][0] == 'S' :
-                completePrint: str = str(idTable[tableIdx])
-                condition = True
-                while(condition):
-                    condition = False
-                    i = 0
 
-                    for i in range (len(idTable)):
-                        findString = '['+str(i)+','
-                        if findString in completePrint :
-                            change = str(idTable[i])+','
-                            completePrint = completePrint.replace(findString, change)
-                            condition = True
-                        findString = ', '+str(i)+']'
-                        if findString in completePrint :
-                            change = ', '+str(idTable[i])
-                            completePrint = completePrint.replace(findString, change)
-                            condition = True
-                        findString = "\'"+str(i)+"\'"
-                        if findString in completePrint :
-                            change = str(idTable[i])
-                            if '[' in change :
-                                change = change.replace('[', '')
-                            if ']' in change:
-                                change = change.replace(']', '')
-                            completePrint = completePrint.replace(findString, change)
-                            condition = True
-                        findString = ''
-                print (completePrint)
+        a = 0
 
-        with open("data/output.txt", "w") as text_file:
-            text_file.write(completePrint)
+        with open("result/output_{}.txt".format(sentenceIdx), "w") as text_file:
+
+            for tableIdx in range (len(idTable)):
+
+                if idTable[tableIdx][0] == 'S' :
+                    completePrint: str = str(idTable[tableIdx])
+                    condition = True
+                    while(condition):
+                        condition = False
+                        i = 0
+
+                        for i in range (len(idTable)):
+                            findString = '['+str(i)+','
+                            if findString in completePrint :
+                                change = str(idTable[i])+','
+                                completePrint = completePrint.replace(findString, change)
+                                condition = True
+                            findString = ', '+str(i)+']'
+                            if findString in completePrint :
+                                change = ', '+str(idTable[i])
+                                completePrint = completePrint.replace(findString, change)
+                                condition = True
+                            findString = "\'"+str(i)+"\'"
+                            if findString in completePrint :
+                                change = str(idTable[i])
+                                if '[' in change :
+                                    change = change.replace('[', '')
+                                if ']' in change:
+                                    change = change.replace(']', '')
+                                completePrint = completePrint.replace(findString, change)
+                                condition = True
+                            findString = ''
+                    print (completePrint)
+                    a += 1
+                    text_file.write("{}. {}\n".format(a, completePrint))
+
+        # used grammar 출력용
+        a = 0
+
+        with open('result/used_grammar_{}.txt'.format(sentenceIdx), 'w') as f:
+            for item in idTable:
+                a += 1
+                f.write("{}. {}\n".format(a, item))
 
         # TODO
         #  What I Have Done : 일단 unary 하나 짜리 rewrite 가능한 문법은 전부 표현 완료

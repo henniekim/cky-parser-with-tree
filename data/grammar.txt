@@ -4,7 +4,6 @@ NP -> NP PP
 PP -> P NP
 VP -> VP PP
 VP -> VP NP
-VP -> VP PP
 NP -> NP VP
 NP -> n
 VP -> v
